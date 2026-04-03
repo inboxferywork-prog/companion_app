@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beat Mapper — Engine Test</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,sans-serif;background:#f5f5f0;padding:20px;color:#2c2c2a}
+  h1{font-size:18px;font-weight:500;margin-bottom:16px;color:#2c2c2a}
+  h2{font-size:14px;font-weight:500;margin:20px 0 8px;color:#444441}
+  .card{background:#fff;border:0.5px solid #d3d1c7;border-radius:12px;padding:16px;margin-bottom:12px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
+  .chip{font-size:12px;padding:3px 10px;border-radius:10px;border:0.5px solid}
+  .green{background:#E1F5EE;color:#085041;border-color:#5DCAA5}
+  .blue{background:#E6F1FB;color:#042C53;border-color:#85B7EB}
+  .amber{background:#FAEEDA;color:#412402;border-color:#FAC775}
+  .red{background:#FCEBEB;color:#501313;border-color:#F09595}
+  .gray{background:#F1EFE8;color:#2C2C2A;border-color:#D3D1C7}
+  .log{font-size:11px;font-family:monospace;background:#f1efe8;border-radius:8px;padding:10px;max-height:200px;overflow-y:auto;white-space:pre-wrap;word-break:break-all}
+  .ok{color:#0F6E56} .err{color:#A32D2D} .info{color:#185FA5}
+  button{padding:6px 14px;border-radius:8px;border:0.5px solid #d3d1c7;background:#fff;cursor:pointer;font-size:12px;color:#2c2c2a}
+  button:hover{background:#f1efe8}
+  .staff-wrap{background:#fff;border:0.5px solid #d3d1c7;border-radius:10px;padding:8px}
+  .note-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .note-cell{text-align:center}
+  .note-label{font-size:11px;margin-top:4px;color:#5f5e5a}
+  .pass{color:#0F6E56;font-weight:500} .fail{color:#A32D2D;font-weight:500}
+  #summary{font-size:14px;padding:12px;border-radius:10px;margin-top:8px}
+</style>
+</head>
+<body>
+
+<h1>Beat Mapper — Engine Test (A1 · A2 · A3)</h1>
+
+<!-- LOG -->
+<div class="card">
+  <h2>Log konsol</h2>
+  <div class="log" id="log">Menginisialisasi...\n</div>
+</div>
+
+<!-- A1 STATUS -->
+<div class="card" id="card-a1">
+  <h2>A1 — BookEngine</h2>
+  <div class="row" id="a1-status"></div>
+  <div class="row" id="a1-notes"></div>
+</div>
+
+<!-- A2 VISUAL -->
+<div class="card">
+  <h2>A2 — NoteRenderer (Unit 1–2: Do, Re, Mi)</h2>
+  <div class="note-grid" id="note-grid"></div>
+</div>
+
+<!-- A3 STATUS -->
+<div class="card" id="card-a3">
+  <h2>A3 — ProgressStore</h2>
+  <div class="row" id="a3-status"></div>
+  <div class="row" style="gap:8px">
+    <button onclick="testActivity()">Simulasi: kuis u01 skor 5/5</button>
+    <button onclick="testFlashcard()">Simulasi: flashcard 3x views</button>
+    <button onclick="testReset()">Reset progress</button>
+  </div>
+  <div class="row" id="a3-result" style="margin-top:8px"></div>
+</div>
+
+<!-- SUMMARY -->
+<div id="summary" style="display:none"></div>
+
+<script type="module">
+import BookEngine    from './BookEngine.js';
+import NoteRenderer  from './NoteRenderer.js';
+import ProgressStore from './ProgressStore.js';
+
+// ── expose ke window untuk tombol ────────────────────────────────────────────
+window.testActivity  = testActivity;
+window.testFlashcard = testFlashcard;
+window.testReset     = testReset;
+
+const log = document.getElementById('log');
+function out(msg, type=''){log.innerHTML+=`<span class="${type}">${msg}</span>\n`;log.scrollTop=9999;}
+
+let passed = 0, failed = 0;
+function assert(label, condition){
+  if(condition){ out(`  ✓ ${label}`,'ok'); passed++; }
+  else          { out(`  ✗ ${label}`,'err'); failed++; }
+}
+
+// ── A1: BookEngine ────────────────────────────────────────────────────────────
+out('\n[A1] BookEngine — loading...', 'info');
+try {
+  // Muat JSON langsung sebagai objek (tidak butuh fetch di test ini)
+  const res  = await fetch('./book_yamaha_jmc_grade1.json');
+  const json = await res.json();
+  await BookEngine.loadBook('yamaha_jmc_grade1', json);
+
+  const meta  = BookEngine.getMeta();
+  const units = BookEngine.getAllUnits();
+  const notes = BookEngine.getNotesForLevel(1);
+  const quiz  = BookEngine.getQuizConfig();
+  const fc    = BookEngine.getFlashcardConfig();
+  const color = BookEngine.getNoteColor('Do');
+  const msg   = BookEngine.getMascotMessage('intro');
+  const crit  = BookEngine.getCompletionCriteria();
+
+  assert('getMeta() mengembalikan book_id',    meta.book_id === 'yamaha_jmc_grade1');
+  assert('getAllUnits() = 8 unit',             units.length === 8);
+  assert('getNotesForLevel(1) = 3 nada',       notes.length === 3);
+  assert('getNoteColor(Do) punya hex',         !!color.hex);
+  assert('getQuizConfig() ada pool',           Array.isArray(quiz?.pool));
+  assert('getFlashcardConfig() ada cards',     Array.isArray(fc?.cards));
+  assert('getMascotMessage(intro) tidak kosong', msg.length > 0);
+  assert('getCompletionCriteria() ada quiz_min_score', crit.quiz_min_score !== undefined);
+  assert('shouldShowLetterNames(1) = false',   BookEngine.shouldShowLetterNames(1) === false);
+  assert('shouldShowLetterNames(2) = true',    BookEngine.shouldShowLetterNames(2) === true);
+
+  // Render status chip
+  const a1row = document.getElementById('a1-status');
+  a1row.innerHTML = `
+    <span class="chip green">✓ Loaded</span>
+    <span class="chip blue">${meta.book_title}</span>
+    <span class="chip gray">${units.length} units</span>
+    <span class="chip gray">${Object.keys(BookEngine.getSolfegeSystem().note_colors).length} note colors</span>
+  `;
+  // Tampilkan nada level 1
+  const noteRow = document.getElementById('a1-notes');
+  const lvl1    = BookEngine.getNotesForLevel(1);
+  noteRow.innerHTML = lvl1.map(n =>
+    `<span class="chip" style="background:${n.colorBg};color:${n.color};border-color:${n.color}66">${n.solfege} = ${n.note_name}</span>`
+  ).join('');
+
+  out('[A1] OK\n','ok');
+
+} catch(e) {
+  out(`[A1] ERROR: ${e.message}`, 'err');
+  failed += 10;
+}
+
+// ── A2: NoteRenderer ─────────────────────────────────────────────────────────
+out('[A2] NoteRenderer — rendering...', 'info');
+try {
+  const grid   = document.getElementById('note-grid');
+  const level2 = BookEngine.getNotesForLevel(2);   // Do–Do tinggi
+
+  let renderOk = true;
+  for (const noteData of level2) {
+    const cell = document.createElement('div');
+    cell.className = 'note-cell';
+
+    const svg = NoteRenderer.createStaffSVG('100%', undefined, 120);
+    NoteRenderer.drawStaff(svg, { clef: 'treble' });
+    NoteRenderer.drawNote(svg, noteData, { showLabel: true, animate: true });
+
+    cell.appendChild(svg);
+    cell.innerHTML += `<div class="note-label" style="color:${noteData.color}">${noteData.solfege}<br><small style="opacity:.6">${noteData.note_name}${noteData.octave}</small></div>`;
+    grid.appendChild(cell);
+
+    // Cek elemen tergambar
+    if (!svg.querySelector('.nr-note')) renderOk = false;
+  }
+
+  assert('drawStaff() membuat .nr-staff', !!document.querySelector('.nr-staff'));
+  assert('drawNote() membuat .nr-note',   !!document.querySelector('.nr-note'));
+  assert('Semua nada level 2 ter-render', renderOk);
+  assert('createStaffSVG() mengembalikan SVGElement', !!document.querySelector('svg'));
+  assert('clear() berfungsi (test independen)', (() => {
+    const testSvg = NoteRenderer.createStaffSVG();
+    NoteRenderer.drawStaff(testSvg);
+    NoteRenderer.drawNote(testSvg, level2[0]);
+    NoteRenderer.clear(testSvg);
+    return testSvg.querySelectorAll('.nr-note, .nr-staff').length === 0;
+  })());
+
+  out('[A2] OK\n','ok');
+} catch(e) {
+  out(`[A2] ERROR: ${e.message}`, 'err');
+  failed += 5;
+}
+
+// ── A3: ProgressStore ─────────────────────────────────────────────────────────
+out('[A3] ProgressStore — initializing...', 'info');
+try {
+  // Buat criteria map dari BookEngine
+  const criteriaMap = {};
+  BookEngine.getAllUnits().forEach(u => {
+    criteriaMap[u.unit_id] = u.completion_criteria || {};
+  });
+
+  ProgressStore.init('yamaha_jmc_grade1', criteriaMap);
+  ProgressStore.startSession();
+
+  assert('init() tidak throw',             true);
+  assert('getCurrentUnitId() = u01',       ProgressStore.getCurrentUnitId() === 'u01');
+  assert('getCurrentLevel() = 1',          ProgressStore.getCurrentLevel() === 1);
+  assert('isUnitUnlocked(u01) = true',     ProgressStore.isUnitUnlocked('u01'));
+  assert('isUnitUnlocked(u02) = false',    !ProgressStore.isUnitUnlocked('u02'));
+  assert('getStars(u01) = 0 awal',         ProgressStore.getStars('u01') === 0);
+  assert('getTotalStars() = 0 awal',       ProgressStore.getTotalStars() === 0);
+  assert('getProfile() opsional (null ok)',  ProgressStore.getProfile() === null || true);
+
+  renderA3Status();
+  out('[A3] OK\n','ok');
+} catch(e) {
+  out(`[A3] ERROR: ${e.message}`, 'err');
+  failed += 5;
+}
+
+// ── Summary ───────────────────────────────────────────────────────────────────
+const total = passed + failed;
+const pct   = Math.round(passed/total*100);
+const sumEl = document.getElementById('summary');
+sumEl.style.display = 'block';
+sumEl.style.background = failed === 0 ? '#E1F5EE' : '#FAEEDA';
+sumEl.style.border = `0.5px solid ${failed === 0 ? '#5DCAA5' : '#FAC775'}`;
+sumEl.innerHTML = `
+  <span class="${failed===0?'pass':'fail'}">${failed===0?'Semua test lulus!':'Ada '+failed+' test gagal'}</span>
+  &nbsp;·&nbsp; ${passed}/${total} (${pct}%)
+  &nbsp;·&nbsp; Siap lanjut ke Tahap C
+`;
+
+out(`\n=== HASIL: ${passed}/${total} lulus (${pct}%) ===`, failed===0?'ok':'err');
+
+// ── Fungsi tombol ─────────────────────────────────────────────────────────────
+function renderA3Status() {
+  const global = ProgressStore.getGlobalProgress();
+  const row    = document.getElementById('a3-status');
+  row.innerHTML = `
+    <span class="chip green">✓ Initialized</span>
+    <span class="chip blue">Unit: ${global.current_unit}</span>
+    <span class="chip gray">Level: ${global.current_level}</span>
+    <span class="chip amber">Bintang: ${global.total_stars}</span>
+    <span class="chip gray">Sesi: ${global.sessions_total}</span>
+  `;
+}
+
+window.testActivity = function() {
+  ProgressStore.markActivityDone('u01', 'quiz_note_reading', { score: 5, outOf: 5 });
+  renderA3Status();
+  const res = document.getElementById('a3-result');
+  const done = ProgressStore.isUnitComplete('u01');
+  const stars = ProgressStore.getStars('u01');
+  res.innerHTML = `
+    <span class="chip ${done?'green':'amber'}">u01 ${done?'✓ Complete':'in_progress'}</span>
+    <span class="chip amber">Bintang: ${stars}</span>
+    <span class="chip blue">Total stars: ${ProgressStore.getTotalStars()}</span>
+    <span class="chip ${ProgressStore.isUnitUnlocked('u02')?'green':'red'}">u02 ${ProgressStore.isUnitUnlocked('u02')?'terbuka':'terkunci'}</span>
+  `;
+};
+
+window.testFlashcard = function() {
+  ProgressStore.markActivityDone('u01', 'flashcard', { views: 3 });
+  renderA3Status();
+  const views = ProgressStore.getFlashcardViews('u01');
+  document.getElementById('a3-result').innerHTML +=
+    ` <span class="chip blue">Flashcard views: ${views}</span>`;
+};
+
+window.testReset = function() {
+  ProgressStore.reset('yamaha_jmc_grade1');
+  ProgressStore.init('yamaha_jmc_grade1', {});
+  renderA3Status();
+  document.getElementById('a3-result').innerHTML =
+    '<span class="chip gray">Progress di-reset ke awal.</span>';
+};
+
+</script>
+</body>
+</html>

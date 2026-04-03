@@ -1,0 +1,769 @@
+{
+  "meta": {
+    "book_id": "yamaha_jmc_grade1",
+    "book_title": "Junior Music Course — Grade 1",
+    "publisher": "Yamaha Music Foundation",
+    "method": "Yamaha",
+    "target_age": "4–6",
+    "total_units": 8,
+    "app_levels_mapped": 4,
+    "language": "id",
+    "version": "1.0.0",
+    "last_updated": "2026-04-03"
+  },
+
+  "solfege_system": {
+    "primary": "do_re_mi",
+    "secondary": "C_D_E",
+    "introduce_secondary_at_level": 2,
+    "note_colors": {
+      "Do":  { "hex": "#E8453C", "bg": "#FFF0EF" },
+      "Re":  { "hex": "#E8843C", "bg": "#FFF5EE" },
+      "Mi":  { "hex": "#C8A800", "bg": "#FFFDE6" },
+      "Fa":  { "hex": "#3BAD4E", "bg": "#EDFAEF" },
+      "Sol": { "hex": "#2F86D4", "bg": "#EBF4FF" },
+      "La":  { "hex": "#6B5DD3", "bg": "#F0EEFF" },
+      "Si":  { "hex": "#C4407A", "bg": "#FEF0F6" }
+    }
+  },
+
+  "units": [
+    {
+      "unit_id": "u01",
+      "unit_number": 1,
+      "title": "Kenalan dengan Do",
+      "book_pages": "4–9",
+      "app_level": 1,
+      "duration_weeks": "2–3",
+      "theory_concepts": [
+        "Mengenal piano dan tuts putih",
+        "Middle C (Do) sebagai titik awal",
+        "Staff 5 garis — pengenalan visual",
+        "Nilai not: not penuh (4 ketukan)"
+      ],
+      "notes_introduced": ["Do"],
+      "note_positions": {
+        "Do": {
+          "solfege": "Do",
+          "note_name": "C",
+          "octave": 4,
+          "clef": "treble",
+          "staff_line": "ledger_below",
+          "staff_description": "Garis bantu di bawah staff — rumah istimewa Do!",
+          "piano_position": "Tuts putih kiri dari pasangan 2 tuts hitam",
+          "staff_y_svg": 87,
+          "needs_ledger": true
+        }
+      },
+      "rhythms_introduced": ["whole_note"],
+      "time_signatures": [],
+      "key_signatures": ["C_major"],
+      "app_activities": {
+        "flashcard": {
+          "enabled": true,
+          "cards": ["Do_position", "Do_piano_key", "whole_note_value"]
+        },
+        "quiz_note_reading": {
+          "enabled": true,
+          "pool": ["Do"],
+          "question_count": 5,
+          "mode": "solfege_only",
+          "show_note_name": false
+        },
+        "piano_explore": {
+          "enabled": true,
+          "highlight_keys": ["C4"],
+          "free_play": true
+        },
+        "staff_lesson": {
+          "enabled": true,
+          "show_lines_labeled": false,
+          "show_spaces_labeled": false,
+          "animated_note": "Do"
+        }
+      },
+      "mascot_message": {
+        "intro": "Halo! Aku Nota! Hari ini kita kenalan dengan nada DO — nada paling spesial!",
+        "success": "Kamu sudah hafal Do! Itu nada rumah kita.",
+        "encouragement": "Coba lagi! Do ada di garis kecil di bawah."
+      },
+      "completion_criteria": {
+        "flashcard_views": 3,
+        "quiz_min_score": 4,
+        "quiz_out_of": 5
+      }
+    },
+
+    {
+      "unit_id": "u02",
+      "unit_number": 2,
+      "title": "Re dan Mi muncul!",
+      "book_pages": "10–17",
+      "app_level": 1,
+      "duration_weeks": "2–3",
+      "theory_concepts": [
+        "Nada Re dan Mi",
+        "Garis 1 dan Spasi 1 diperkenalkan (visual, belum diberi nomor)",
+        "Nilai not: not setengah (2 ketukan)",
+        "Naik dan turun (ascending, descending) secara aural"
+      ],
+      "notes_introduced": ["Re", "Mi"],
+      "note_positions": {
+        "Re": {
+          "solfege": "Re",
+          "note_name": "D",
+          "octave": 4,
+          "clef": "treble",
+          "staff_line": "space_1",
+          "staff_description": "Ruang pertama — Re tidur di celah paling bawah",
+          "piano_position": "Tuts putih tengah dari pasangan 2 tuts hitam",
+          "staff_y_svg": 80,
+          "needs_ledger": false
+        },
+        "Mi": {
+          "solfege": "Mi",
+          "note_name": "E",
+          "octave": 4,
+          "clef": "treble",
+          "staff_line": "line_1",
+          "staff_description": "Tepat di garis 1 — garis paling bawah staff",
+          "piano_position": "Tuts putih kanan dari pasangan 2 tuts hitam",
+          "staff_y_svg": 72,
+          "needs_ledger": false
+        }
+      },
+      "rhythms_introduced": ["half_note"],
+      "time_signatures": ["4/4"],
+      "key_signatures": ["C_major"],
+      "app_activities": {
+        "flashcard": {
+          "enabled": true,
+          "cards": ["Do_Re_Mi_compare", "Re_position", "Mi_position", "half_note_value"]
+        },
+        "quiz_note_reading": {
+          "enabled": true,
+          "pool": ["Do", "Re", "Mi"],
+          "question_count": 8,
+          "mode": "solfege_only",
+          "show_note_name": false
+        },
+        "quiz_rhythm": {
+          "enabled": true,
+          "pool": ["whole_note", "half_note"],
+          "question_count": 5
+        },
+        "piano_explore": {
+          "enabled": true,
+          "highlight_keys": ["C4", "D4", "E4"],
+          "free_play": true
+        },
+        "staff_lesson": {
+          "enabled": true,
+          "show_lines_labeled": false,
+          "show_spaces_labeled": false,
+          "show_position_hint": true,
+          "notes_shown": ["Do", "Re", "Mi"]
+        },
+        "ascending_game": {
+          "enabled": true,
+          "description": "Sentuh nada dari rendah ke tinggi: Do → Re → Mi"
+        }
+      },
+      "mascot_message": {
+        "intro": "Sekarang Do punya dua teman baru — Re dan Mi! Yuk kenalan!",
+        "success": "Wah, kamu bisa bedain Do, Re, dan Mi! Keren sekali!",
+        "encouragement": "Re ada di celah, Mi ada di garis. Coba perhatikan lagi!"
+      },
+      "completion_criteria": {
+        "flashcard_views": 3,
+        "quiz_min_score": 6,
+        "quiz_out_of": 8
+      }
+    },
+
+    {
+      "unit_id": "u03",
+      "unit_number": 3,
+      "title": "Fa dan Sol bergabung",
+      "book_pages": "18–25",
+      "app_level": 2,
+      "duration_weeks": "2–3",
+      "theory_concepts": [
+        "Nada Fa dan Sol",
+        "Spasi 2 dan Garis 2 (mulai diberi nama resmi)",
+        "Nilai not: not seperempat (1 ketukan)",
+        "Tanda birama 4/4 dijelaskan",
+        "Mulai membaca do-re-mi-fa-sol berurutan"
+      ],
+      "notes_introduced": ["Fa", "Sol"],
+      "note_positions": {
+        "Fa": {
+          "solfege": "Fa",
+          "note_name": "F",
+          "octave": 4,
+          "clef": "treble",
+          "staff_line": "space_2",
+          "staff_description": "Ruang kedua — Fa di celah antara garis 1 dan 2",
+          "piano_position": "Tuts putih kiri dari kelompok 3 tuts hitam",
+          "staff_y_svg": 64,
+          "needs_ledger": false
+        },
+        "Sol": {
+          "solfege": "Sol",
+          "note_name": "G",
+          "octave": 4,
+          "clef": "treble",
+          "staff_line": "line_2",
+          "staff_description": "Tepat di garis 2",
+          "piano_position": "Tuts putih kedua dari kelompok 3 tuts hitam",
+          "staff_y_svg": 56,
+          "needs_ledger": false
+        }
+      },
+      "rhythms_introduced": ["quarter_note"],
+      "time_signatures": ["4/4"],
+      "key_signatures": ["C_major"],
+      "app_activities": {
+        "flashcard": {
+          "enabled": true,
+          "cards": ["Fa_position", "Sol_position", "quarter_note_value", "Do_to_Sol_all"]
+        },
+        "quiz_note_reading": {
+          "enabled": true,
+          "pool": ["Do", "Re", "Mi", "Fa", "Sol"],
+          "question_count": 10,
+          "mode": "solfege_primary",
+          "show_note_name": true,
+          "note_name_hint_delay_ms": 2000
+        },
+        "quiz_rhythm": {
+          "enabled": true,
+          "pool": ["whole_note", "half_note", "quarter_note"],
+          "question_count": 6
+        },
+        "staff_lesson": {
+          "enabled": true,
+          "show_lines_labeled": true,
+          "show_spaces_labeled": true,
+          "label_style": "numbered",
+          "notes_shown": ["Do", "Re", "Mi", "Fa", "Sol"]
+        },
+        "scale_run_game": {
+          "enabled": true,
+          "description": "Tekan Do sampai Sol berurutan tanpa salah — makin cepat makin hebat!"
+        }
+      },
+      "mascot_message": {
+        "intro": "Setengah jalan! Fa dan Sol melengkapi tangga nada kita.",
+        "success": "Do sampai Sol — 5 nada pertama kamu sudah hafal!",
+        "encouragement": "Ingat: garis dan celah bergantian. Fa di celah, Sol di garis!"
+      },
+      "completion_criteria": {
+        "flashcard_views": 3,
+        "quiz_min_score": 8,
+        "quiz_out_of": 10
+      }
+    },
+
+    {
+      "unit_id": "u04",
+      "unit_number": 4,
+      "title": "La, Si, dan Do tinggi",
+      "book_pages": "26–33",
+      "app_level": 2,
+      "duration_weeks": "3–4",
+      "theory_concepts": [
+        "Nada La, Si, Do oktaf tinggi",
+        "Garis 3, 4, 5 dan Spasi 3, 4",
+        "Konsep oktaf — Do rendah vs Do tinggi",
+        "Satu oktaf penuh C major",
+        "Nama garis & spasi resmi (EGBDF / FACE)"
+      ],
+      "notes_introduced": ["La", "Si", "Do_high"],
+      "note_positions": {
+        "La": {
+          "solfege": "La",
+          "note_name": "A",
+          "octave": 4,
+          "clef": "treble",
+          "staff_line": "space_3",
+          "staff_description": "Ruang ketiga",
+          "piano_position": "Tuts putih ketiga dari kelompok 3 tuts hitam",
+          "staff_y_svg": 48,
+          "needs_ledger": false
+        },
+        "Si": {
+          "solfege": "Si",
+          "note_name": "B",
+          "octave": 4,
+          "clef": "treble",
+          "staff_line": "line_3",
+          "staff_description": "Tepat di garis 3 — garis tengah staff",
+          "piano_position": "Tuts putih kanan dari kelompok 3 tuts hitam",
+          "staff_y_svg": 40,
+          "needs_ledger": false
+        },
+        "Do_high": {
+          "solfege": "Do (tinggi)",
+          "note_name": "C",
+          "octave": 5,
+          "clef": "treble",
+          "staff_line": "space_4",
+          "staff_description": "Ruang keempat — Do kembali, satu oktaf lebih tinggi!",
+          "piano_position": "Tuts putih sama seperti Do, tapi satu kelompok ke kanan",
+          "staff_y_svg": 32,
+          "needs_ledger": false
+        }
+      },
+      "rhythms_introduced": ["dotted_half_note"],
+      "time_signatures": ["4/4", "3/4"],
+      "key_signatures": ["C_major"],
+      "app_activities": {
+        "flashcard": {
+          "enabled": true,
+          "cards": [
+            "La_position", "Si_position", "Do_high_position",
+            "octave_concept", "full_C_scale", "EGBDF_mnemonic", "FACE_mnemonic"
+          ]
+        },
+        "quiz_note_reading": {
+          "enabled": true,
+          "pool": ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si", "Do_high"],
+          "question_count": 12,
+          "mode": "solfege_primary",
+          "show_note_name": true,
+          "note_name_hint_delay_ms": 1500
+        },
+        "staff_lesson": {
+          "enabled": true,
+          "show_lines_labeled": true,
+          "show_spaces_labeled": true,
+          "label_style": "named",
+          "show_mnemonics": true,
+          "notes_shown": ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si", "Do_high"]
+        },
+        "octave_compare_game": {
+          "enabled": true,
+          "description": "Sentuh Do rendah dan Do tinggi — dengarkan perbedaannya!"
+        },
+        "full_scale_game": {
+          "enabled": true,
+          "description": "Main tangga nada Do–Do lengkap, naik dan turun"
+        }
+      },
+      "mascot_message": {
+        "intro": "Wow, hampir komplit! La, Si, dan Do tinggi — lalu tangga nada kita lengkap!",
+        "success": "Luar biasa! Kamu sudah hafal semua 8 nada tangga nada C!",
+        "encouragement": "Do tinggi ada di ruang 4 — ingat Do ada di celah, bukan di garis!"
+      },
+      "completion_criteria": {
+        "flashcard_views": 4,
+        "quiz_min_score": 10,
+        "quiz_out_of": 12
+      }
+    },
+
+    {
+      "unit_id": "u05",
+      "unit_number": 5,
+      "title": "Kunci Bass dan tangan kiri",
+      "book_pages": "34–41",
+      "app_level": 3,
+      "duration_weeks": "3–4",
+      "theory_concepts": [
+        "Bass clef (kunci Fa) diperkenalkan",
+        "Not C–G di kunci bass",
+        "Grand staff — treble + bass bersama",
+        "Middle C antara dua kunci",
+        "Membaca dua tangan secara bersamaan"
+      ],
+      "notes_introduced": ["Do_bass", "Re_bass", "Mi_bass", "Fa_bass", "Sol_bass"],
+      "note_positions": {
+        "Do_bass": {
+          "solfege": "Do",
+          "note_name": "C",
+          "octave": 4,
+          "clef": "bass",
+          "staff_line": "ledger_above",
+          "staff_description": "Garis bantu di atas staff bass — sama Middle C!",
+          "staff_y_svg": 20,
+          "needs_ledger": true
+        },
+        "Re_bass": {
+          "solfege": "Re",
+          "note_name": "D",
+          "octave": 3,
+          "clef": "bass",
+          "staff_line": "space_5",
+          "staff_description": "Ruang 5 di bass clef",
+          "staff_y_svg": 28,
+          "needs_ledger": false
+        },
+        "Mi_bass": {
+          "solfege": "Mi",
+          "note_name": "E",
+          "octave": 3,
+          "clef": "bass",
+          "staff_line": "line_5",
+          "staff_description": "Garis 5 di bass clef (garis teratas)",
+          "staff_y_svg": 36,
+          "needs_ledger": false
+        },
+        "Fa_bass": {
+          "solfege": "Fa",
+          "note_name": "F",
+          "octave": 3,
+          "clef": "bass",
+          "staff_line": "space_4",
+          "staff_description": "Ruang 4 di bass clef",
+          "staff_y_svg": 44,
+          "needs_ledger": false
+        },
+        "Sol_bass": {
+          "solfege": "Sol",
+          "note_name": "G",
+          "octave": 3,
+          "clef": "bass",
+          "staff_line": "line_4",
+          "staff_description": "Garis 4 di bass clef",
+          "staff_y_svg": 52,
+          "needs_ledger": false
+        }
+      },
+      "rhythms_introduced": [],
+      "time_signatures": ["4/4", "3/4"],
+      "key_signatures": ["C_major"],
+      "app_activities": {
+        "flashcard": {
+          "enabled": true,
+          "cards": [
+            "bass_clef_symbol", "grand_staff_overview",
+            "middle_C_both_clefs", "bass_GBDFA_mnemonic", "bass_ACEG_mnemonic"
+          ]
+        },
+        "quiz_note_reading": {
+          "enabled": true,
+          "pool": ["Do_bass", "Re_bass", "Mi_bass", "Fa_bass", "Sol_bass"],
+          "question_count": 10,
+          "mode": "solfege_primary",
+          "clef_filter": "bass",
+          "show_note_name": true
+        },
+        "grand_staff_lesson": {
+          "enabled": true,
+          "description": "Lihat treble dan bass clef bersama — cari Middle C di tengah!"
+        },
+        "clef_switch_quiz": {
+          "enabled": true,
+          "description": "Giliran tebak — kadang treble, kadang bass!",
+          "pool_treble": ["Do", "Mi", "Sol"],
+          "pool_bass": ["Do_bass", "Mi_bass", "Sol_bass"],
+          "question_count": 8
+        }
+      },
+      "mascot_message": {
+        "intro": "Sekarang kita belajar tangan kiri! Ada kunci baru — kunci Bass.",
+        "success": "Kamu bisa baca dua kunci! Itu kehebatan pianis sejati.",
+        "encouragement": "Kunci Bass seperti kunci Treble tapi terbalik. Ingat GBDFA!"
+      },
+      "completion_criteria": {
+        "flashcard_views": 4,
+        "quiz_min_score": 8,
+        "quiz_out_of": 10
+      }
+    },
+
+    {
+      "unit_id": "u06",
+      "unit_number": 6,
+      "title": "Tanda kunci G major — F# pertamaku",
+      "book_pages": "42–49",
+      "app_level": 3,
+      "duration_weeks": "3–4",
+      "theory_concepts": [
+        "Tanda kunci (key signature) — pengenalan konsep",
+        "G major = 1 tanda kres (F#)",
+        "Perbedaan C major dan G major di partitur",
+        "Membaca F# secara otomatis dari tanda kunci",
+        "Tanda natural (♮) sebagai pengecualian"
+      ],
+      "notes_introduced": ["F_sharp"],
+      "accidentals_introduced": ["sharp", "natural"],
+      "key_signatures_introduced": {
+        "G_major": {
+          "sharps": ["F#"],
+          "flats": [],
+          "relative_minor": "E_minor",
+          "solfege_mapping": { "Do": "G", "Re": "A", "Mi": "B", "Fa": "C", "Sol": "D", "La": "E", "Si": "F#" }
+        }
+      },
+      "time_signatures": ["4/4", "3/4"],
+      "app_activities": {
+        "flashcard": {
+          "enabled": true,
+          "cards": [
+            "key_signature_concept", "sharp_symbol", "G_major_key_sig",
+            "C_vs_G_comparison", "natural_sign"
+          ]
+        },
+        "quiz_key_signature": {
+          "enabled": true,
+          "pool": ["C_major", "G_major"],
+          "question_count": 8,
+          "question_types": ["identify_key", "count_sharps", "spot_the_sharp"]
+        },
+        "accidental_lesson": {
+          "enabled": true,
+          "show_sharp": true,
+          "show_flat": false,
+          "show_natural": true
+        },
+        "quiz_note_reading": {
+          "enabled": true,
+          "pool": ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],
+          "key_context": "G_major",
+          "question_count": 10,
+          "mode": "solfege_primary",
+          "show_note_name": true
+        }
+      },
+      "mascot_message": {
+        "intro": "Tanda bintang kecil di depan partitur itu namanya tanda kunci. Ini hebat!",
+        "success": "Kamu tahu F# sekarang! G major jadi mudah dibaca.",
+        "encouragement": "Tanda kres (#) berarti nadanya naik sedikit. Coba dengarkan bedanya!"
+      },
+      "completion_criteria": {
+        "flashcard_views": 4,
+        "quiz_min_score": 7,
+        "quiz_out_of": 10
+      }
+    },
+
+    {
+      "unit_id": "u07",
+      "unit_number": 7,
+      "title": "F major — Bb pertamaku",
+      "book_pages": "50–57",
+      "app_level": 4,
+      "duration_weeks": "3–4",
+      "theory_concepts": [
+        "F major = 1 tanda mol (Bb)",
+        "Mol (♭) — nada turun sedikit",
+        "Perbedaan kres dan mol",
+        "Membaca Bb otomatis dari tanda kunci F major",
+        "Review 3 tanda kunci: C, G, F"
+      ],
+      "notes_introduced": ["B_flat"],
+      "accidentals_introduced": ["flat"],
+      "key_signatures_introduced": {
+        "F_major": {
+          "sharps": [],
+          "flats": ["Bb"],
+          "relative_minor": "D_minor",
+          "solfege_mapping": { "Do": "F", "Re": "G", "Mi": "A", "Fa": "Bb", "Sol": "C", "La": "D", "Si": "E" }
+        }
+      },
+      "time_signatures": ["4/4", "3/4"],
+      "app_activities": {
+        "flashcard": {
+          "enabled": true,
+          "cards": [
+            "flat_symbol", "F_major_key_sig", "sharp_vs_flat_compare",
+            "three_keys_review"
+          ]
+        },
+        "quiz_key_signature": {
+          "enabled": true,
+          "pool": ["C_major", "G_major", "F_major"],
+          "question_count": 10,
+          "question_types": ["identify_key", "count_accidentals", "sharp_or_flat"]
+        },
+        "quiz_note_reading": {
+          "enabled": true,
+          "pool": ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],
+          "key_context": "F_major",
+          "question_count": 10,
+          "mode": "solfege_primary",
+          "show_note_name": true
+        },
+        "three_keys_game": {
+          "enabled": true,
+          "description": "Lihat tanda kunci, tebak: C, G, atau F major?"
+        }
+      },
+      "mascot_message": {
+        "intro": "F major punya tanda mol — Bb. Mol itu seperti kres, tapi ke bawah!",
+        "success": "Sekarang kamu kenal 3 tanda kunci! C, G, dan F — keren!",
+        "encouragement": "Mol (♭) = turun, kres (#) = naik. Ingat ini selalu!"
+      },
+      "completion_criteria": {
+        "flashcard_views": 3,
+        "quiz_min_score": 8,
+        "quiz_out_of": 10
+      }
+    },
+
+    {
+      "unit_id": "u08",
+      "unit_number": 8,
+      "title": "Review besar dan mini resital",
+      "book_pages": "58–64",
+      "app_level": 4,
+      "duration_weeks": "2–3",
+      "theory_concepts": [
+        "Review semua not treble dan bass clef",
+        "Review 3 tanda kunci (C, G, F major)",
+        "Review semua nilai not",
+        "Interval dasar: 2nd, 3rd, 5th",
+        "Persiapan Grade 2"
+      ],
+      "notes_introduced": [],
+      "rhythms_introduced": ["eighth_note"],
+      "intervals_introduced": ["2nd", "3rd", "5th"],
+      "app_activities": {
+        "flashcard": {
+          "enabled": true,
+          "cards": ["all_notes_treble", "all_notes_bass", "all_key_signatures", "interval_2nd", "interval_3rd", "interval_5th"]
+        },
+        "grand_quiz": {
+          "enabled": true,
+          "description": "Kuis besar — campuran semua materi Grade 1",
+          "pool": ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si", "Do_high",
+                   "Do_bass", "Re_bass", "Mi_bass", "Fa_bass", "Sol_bass"],
+          "question_count": 20,
+          "mode": "solfege_and_note_name",
+          "include_key_signatures": true,
+          "include_rhythms": true
+        },
+        "interval_game": {
+          "enabled": true,
+          "pool": ["2nd", "3rd", "5th"],
+          "question_count": 8
+        },
+        "progress_certificate": {
+          "enabled": true,
+          "trigger": "grand_quiz_min_score_15",
+          "message": "Selamat! Kamu telah menyelesaikan Yamaha JMC Grade 1!"
+        }
+      },
+      "mascot_message": {
+        "intro": "Ini sesi terakhir Grade 1! Kamu sudah belajar BANYAK sekali!",
+        "success": "LUAR BIASA! Kamu lulus Grade 1! Siap ke Grade 2?",
+        "encouragement": "Hampir! Review sekali lagi, kamu pasti bisa!"
+      },
+      "completion_criteria": {
+        "flashcard_views": 5,
+        "quiz_min_score": 15,
+        "quiz_out_of": 20,
+        "unlocks": "grade2_preview"
+      }
+    }
+  ],
+
+  "app_levels": {
+    "level_1": {
+      "label": "Level 1 — Do, Re, Mi",
+      "units_covered": ["u01", "u02"],
+      "unlock_condition": "default_unlocked",
+      "color": "#1D9E75",
+      "bg_color": "#E1F5EE",
+      "notes_available": ["Do", "Re", "Mi"],
+      "clefs_available": ["treble"],
+      "key_signatures_available": ["C_major"],
+      "show_note_names": false,
+      "show_letter_names": false
+    },
+    "level_2": {
+      "label": "Level 2 — Do sampai Sol",
+      "units_covered": ["u03", "u04"],
+      "unlock_condition": "level_1_complete",
+      "color": "#185FA5",
+      "bg_color": "#E6F1FB",
+      "notes_available": ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si", "Do_high"],
+      "clefs_available": ["treble"],
+      "key_signatures_available": ["C_major"],
+      "show_note_names": true,
+      "show_letter_names": true,
+      "letter_name_hint_delay_ms": 1500
+    },
+    "level_3": {
+      "label": "Level 3 — Dua tangan & G major",
+      "units_covered": ["u05", "u06"],
+      "unlock_condition": "level_2_complete",
+      "color": "#534AB7",
+      "bg_color": "#EEEDFE",
+      "notes_available": ["Do", "Re", "Mi", "Fa", "Sol", "La", "Si", "Do_high",
+                          "Do_bass", "Re_bass", "Mi_bass", "Fa_bass", "Sol_bass"],
+      "clefs_available": ["treble", "bass"],
+      "key_signatures_available": ["C_major", "G_major"],
+      "show_note_names": true,
+      "show_letter_names": true
+    },
+    "level_4": {
+      "label": "Level 4 — F major & review besar",
+      "units_covered": ["u07", "u08"],
+      "unlock_condition": "level_3_complete",
+      "color": "#854F0B",
+      "bg_color": "#FAEEDA",
+      "notes_available": "all",
+      "clefs_available": ["treble", "bass"],
+      "key_signatures_available": ["C_major", "G_major", "F_major"],
+      "show_note_names": true,
+      "show_letter_names": true,
+      "completion_reward": "grade1_certificate"
+    }
+  },
+
+  "rhythm_definitions": {
+    "whole_note":       { "beats": 4, "symbol": "𝅝",  "label": "Not penuh",       "introduced_unit": "u01" },
+    "half_note":        { "beats": 2, "symbol": "𝅗𝅥",  "label": "Not setengah",    "introduced_unit": "u02" },
+    "quarter_note":     { "beats": 1, "symbol": "𝅘𝅥",  "label": "Not seperempat",  "introduced_unit": "u03" },
+    "dotted_half_note": { "beats": 3, "symbol": "𝅗𝅥.",  "label": "Not setengah titik", "introduced_unit": "u04" },
+    "eighth_note":      { "beats": 0.5, "symbol": "𝅘𝅥𝅮", "label": "Not seperdelapan", "introduced_unit": "u08" }
+  },
+
+  "mnemonics": {
+    "treble_lines": {
+      "id": "EGBDF",
+      "notes": ["E", "G", "B", "D", "F"],
+      "indonesian": "Emak Gendong Bayi Dua Anak",
+      "english": "Every Good Boy Does Fine"
+    },
+    "treble_spaces": {
+      "id": "FACE",
+      "notes": ["F", "A", "C", "E"],
+      "indonesian": "FACE — seperti wajah!",
+      "english": "FACE"
+    },
+    "bass_lines": {
+      "id": "GBDFA",
+      "notes": ["G", "B", "D", "F", "A"],
+      "indonesian": "Gajah Besar Dan Fitur Aktif",
+      "english": "Good Boys Do Fine Always"
+    },
+    "bass_spaces": {
+      "id": "ACEG",
+      "notes": ["A", "C", "E", "G"],
+      "indonesian": "Aku Cinta Es Goreng",
+      "english": "All Cows Eat Grass"
+    }
+  },
+
+  "progress_schema": {
+    "per_unit": {
+      "status": ["locked", "in_progress", "complete"],
+      "flashcard_views": 0,
+      "quiz_attempts": 0,
+      "quiz_best_score": 0,
+      "stars_earned": 0
+    },
+    "global": {
+      "current_level": 1,
+      "current_unit": "u01",
+      "total_stars": 0,
+      "streak_days": 0,
+      "last_session": null,
+      "grade1_complete": false
+    }
+  }
+}
