@@ -146,7 +146,7 @@ try {
     const cell = document.createElement('div');
     cell.className = 'note-cell';
 
-    const svg = NoteRenderer.createStaffSVG('100%', 140, 160);
+    const svg = NoteRenderer.createStaffSVG('100%', 180, 220);
     NoteRenderer.drawStaff(svg, { clef: 'treble' });
     NoteRenderer.drawNote(svg, noteData, { showLabel: true, animate: true });
 
