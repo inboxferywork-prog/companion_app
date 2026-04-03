@@ -73,7 +73,7 @@ import NoteRenderer  from './NoteRenderer.js';
 import ProgressStore from './ProgressStore.js';
 
 // ── expose ke window untuk tombol ────────────────────────────────────────────
-window.testActivity  = testActivity;
+
 window.testFlashcard = testFlashcard;
 window.testReset     = testReset;
 
@@ -262,6 +262,8 @@ window.testReset = function() {
   document.getElementById('a3-result').innerHTML =
     '<span class="chip gray">Progress di-reset ke awal.</span>';
 };
+ 
+ window.testActivity  = testActivity;
 
 </script>
 </body>
