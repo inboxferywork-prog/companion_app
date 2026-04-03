@@ -146,9 +146,9 @@ try {
     const cell = document.createElement('div');
     cell.className = 'note-cell';
 
-   const svg = NoteRenderer.createStaffSVG('100%', undefined, 120);
-NoteRenderer.drawStaff(svg, { clef: 'treble' });
-NoteRenderer.drawNote(svg, noteData, { showLabel: true, animate: true });
+let svg = NoteRenderer.createStaffSVG('100%', undefined, 120);
+svg = NoteRenderer.drawStaff(svg, { clef: 'treble' }) || svg;
+svg = NoteRenderer.drawNote(svg, noteData, { showLabel: true, animate: true }) || svg;
 
 cell.appendChild(svg);
 
