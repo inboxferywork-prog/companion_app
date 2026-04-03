@@ -146,13 +146,19 @@ try {
     const cell = document.createElement('div');
     cell.className = 'note-cell';
 
-    const svg = NoteRenderer.createStaffSVG('100%', undefined, 120);
-    NoteRenderer.drawStaff(svg, { clef: 'treble' });
-    NoteRenderer.drawNote(svg, noteData, { showLabel: true, animate: true });
+   const svg = NoteRenderer.createStaffSVG('100%', undefined, 120);
+NoteRenderer.drawStaff(svg, { clef: 'treble' });
+NoteRenderer.drawNote(svg, noteData, { showLabel: true, animate: true });
 
-    cell.appendChild(svg);
-    cell.innerHTML += `<div class="note-label" style="color:${noteData.color}">${noteData.solfege}<br><small style="opacity:.6">${noteData.note_name}${noteData.octave}</small></div>`;
-    grid.appendChild(cell);
+cell.appendChild(svg);
+
+const label = document.createElement('div');
+label.className = 'note-label';
+label.style.color = noteData.color;
+label.innerHTML = `${noteData.solfege}<br><small style="opacity:.6">${noteData.note_name}${noteData.octave}</small>`;
+
+cell.appendChild(label);
+grid.appendChild(cell);
 
     // Cek elemen tergambar
     if (!svg.querySelector('.nr-note')) renderOk = false;
